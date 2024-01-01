@@ -10,7 +10,7 @@ def january(request):
     - returns an HttpResponse() object instance imported from django - see line 2
     - pass the response data to the HttpResponse() instance which could be a string or an html file
     """
-    return HttpResponse("Eat o meat for the entire month!")
+    return HttpResponse("Eat no meat for the entire month!")
 
 
 def february(request):
