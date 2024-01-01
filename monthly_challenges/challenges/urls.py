@@ -18,5 +18,5 @@ from . import views
 # month here serves as a key word argument which is passed to the view
 urlpatterns = [
     path("<int:month>", views.monthly_challenge_by_number),
-    path("<str:month>", views.monthly_challenge),
+    path("<str:month>", views.monthly_challenge, name="month-challenge"),
 ]
