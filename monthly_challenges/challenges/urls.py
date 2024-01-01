@@ -9,8 +9,14 @@ from . import views
 2. Connect the challenges URL config to the app wide /main global config urls file
 """
 
-urlpatterns = [
+"""urlpatterns = [
     # list of all supported urls
     path("january", views.january),
     path("february", views.february),
+]"""
+# setting up a dynamic path
+# month here serves as a key word argument which is passed to the view
+urlpatterns = [
+    path("<int:month>", views.monthly_challenge_by_number),
+    path("<str:month>", views.monthly_challenge),
 ]
