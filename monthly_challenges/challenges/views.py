@@ -26,10 +26,13 @@ monthly_challenges = {
 def monthly_challenge(request, month):
     # text passed to the view would depend on the requested month
     # could also use a try and except with the HttpResponseNotFound appearing in the except part
-    challenge_text = monthly_challenges.get(
-        month, HttpResponseNotFound("This month is not supported!")
-    )
-    return HttpResponse(challenge_text)
+    try:
+        challenge_text = monthly_challenges[month]
+        # returning some form of HTML
+        response_data = f"<h1>{challenge_text}</h1>"
+        return HttpResponse(response_data)
+    except:
+        return HttpResponseNotFound(f"<h1>This month is not supported!</h1>")
 
 
 def monthly_challenge_by_number(request, month):
