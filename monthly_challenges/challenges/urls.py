@@ -11,6 +11,6 @@ from . import views
 
 urlpatterns = [
     # list of all supported urls
-    path("january", views.index),
-    path("february", views.feb),
+    path("january", views.january),
+    path("february", views.february),
 ]
