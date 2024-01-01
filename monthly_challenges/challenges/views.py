@@ -19,7 +19,27 @@ monthly_challenges = {
     "november": "Do more exercises than usual",
     "december": "Learn a new song on a guitar",
 }
+
+
 # Create your views here.
+def index(request):
+    """This will be the home page
+    returns a list of months as a clickable link
+    """
+    # generate clickable links for each month using code
+    # using a for loop to generate html code for a  <ul></ul> tag with list items
+    list_items = ""
+    months = list(monthly_challenges.keys())
+
+    for month in months:
+        capitalised_month = month.capitalize()
+        month_path = reverse("month-challenge", args=[month])
+        list_items += f'<li><a href="{month_path}">{capitalised_month}</a></li>'
+    # the above results in "<li>...</li><li> ... </li>"
+    # inject the list_items string into the <ul></ul>
+    response_data = f"<ul>{list_items}</ul>"
+
+    return HttpResponse(response_data)
 
 
 # setting up a dynamic  view
@@ -42,7 +62,7 @@ def monthly_challenge_by_number(request, month):
         redirect_month = months[month - 1]  # choose the actual month
         # removing the hard coded url using reverse
         redirect_path = reverse(
-            monthly_challenge, args=[redirect_month]
+            "month-challenge", args=[redirect_month]
         )  # figures how to correctly build a full url
 
         return HttpResponseRedirect(redirect_path)  # redirect path

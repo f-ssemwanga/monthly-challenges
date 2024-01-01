@@ -17,6 +17,7 @@ from . import views
 # setting up a dynamic path
 # month here serves as a key word argument which is passed to the view
 urlpatterns = [
+    path("", views.index),  # will trigger for /challenges/
     path("<int:month>", views.monthly_challenge_by_number),
     path("<str:month>", views.monthly_challenge, name="month-challenge"),
 ]
