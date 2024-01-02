@@ -4,6 +4,9 @@ from django.urls import (
     reverse,
 )  # allows paths to be created by referring to the names of the URLs
 
+# from django.template.loader import render_to_string
+
+
 # global variables
 monthly_challenges = {
     "january": "Eat no meat for the entire month!",
@@ -49,8 +52,7 @@ def monthly_challenge(request, month):
     try:
         challenge_text = monthly_challenges[month]
         # returning some form of HTML
-        response_data = f"<h1>{challenge_text}</h1>"
-        return HttpResponse(response_data)
+        return render("challenges/challenge.html")
     except:
         return HttpResponseNotFound(f"<h1>This month is not supported!</h1>")
 
